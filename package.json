@@ -3,15 +3,31 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "clean": "rm -rf build && mkdir build",
     "start": "node ./bin/www",
-    "build": "cd ./client && npm install && npm run build && cd .."
+    "nodemon": "nodemon ./bin/www",
+    "build": "cd ./client && npm install && npm run build"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "babel-preset-env": "^1.7.0",
+    "cheerio": "^1.0.0-rc.3",
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "memory-cache": "^0.2.0",
+    "morgan": "~1.9.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "babel-cli": "^6.26.0"
   }
 }

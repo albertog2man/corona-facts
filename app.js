@@ -4,20 +4,27 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var apiRouter = require("./routes/index");
+var apiRouter = require("./lib/routes/index");
 
 var app = express();
+var cache = require("memory-cache");
+
+var dotenv = require("dotenv");
+const cors = require("cors");
+
+cache.put("foo", "bar");
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(cors());
+app.options("*", cors());
 
 app.use("/api", apiRouter);
-app.use("/", express.static("build"));
+app.use("/", express.static("./client/build"));
 app.get("/*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
 // catch 404 and forward to error handler
