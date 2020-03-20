@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5cc42071.chunk.css",
+    "main.js": "/static/js/main.b102fb5a.chunk.js",
+    "main.js.map": "/static/js/main.b102fb5a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.bac2a1cb.js",
+    "runtime-main.js.map": "/static/js/runtime-main.bac2a1cb.js.map",
+    "static/js/2.c917928c.chunk.js": "/static/js/2.c917928c.chunk.js",
+    "static/js/2.c917928c.chunk.js.map": "/static/js/2.c917928c.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e7619a2249e285d6b0310b774e05dd83.js": "/precache-manifest.e7619a2249e285d6b0310b774e05dd83.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.5cc42071.chunk.css.map": "/static/css/main.5cc42071.chunk.css.map",
+    "static/js/2.c917928c.chunk.js.LICENSE.txt": "/static/js/2.c917928c.chunk.js.LICENSE.txt",
+    "static/js/main.b102fb5a.chunk.js.LICENSE.txt": "/static/js/main.b102fb5a.chunk.js.LICENSE.txt",
+    "static/media/emilyz.jpg": "/static/media/emilyz.9fcf69e5.jpg",
+    "static/media/nucleo-icons.css": "/static/media/nucleo.f0b489a5.woff",
+    "static/media/react-logo.png": "/static/media/react-logo.eb6be414.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bac2a1cb.js",
+    "static/js/2.c917928c.chunk.js",
+    "static/css/main.5cc42071.chunk.css",
+    "static/js/main.b102fb5a.chunk.js"
+  ]
+}
