@@ -1,3 +1,4 @@
+require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -7,12 +8,8 @@ var logger = require("morgan");
 var apiRouter = require("./lib/routes/index");
 
 var app = express();
-var cache = require("memory-cache");
 
-var dotenv = require("dotenv");
 const cors = require("cors");
-
-cache.put("foo", "bar");
 
 app.use(logger("dev"));
 app.use(express.json());

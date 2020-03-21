@@ -26,6 +26,8 @@ import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";
 import "assets/css/nucleo-icons.css";
 
+dotenv.config();
+
 const hist = createBrowserHistory();
 
 ReactDOM.render(

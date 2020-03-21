@@ -58,18 +58,20 @@ import {
   Marker
 } from "react-google-maps";
 
-const base_url = process.env.BASE_URL;
+let base_url;
+if (process.env.NODE_ENV === "development") {
+  base_url = process.env.REACT_APP_LOCAL_URL;
+} else {
+  base_url = process.env.REACT_APP_REMOTE_URL;
+}
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
-  async componentDidMount() {
-    let payload = await fetch("http://corona-fact.herokuapp.com/api/");
-    // let payload = await fetch("localhost:3000/api");
-    payload = await payload.json();
-    this.setState(payload);
+  componentWillReceiveProps({ data }) {
+    this.setState(data);
   }
 
   render() {
@@ -88,7 +90,7 @@ class Dashboard extends React.Component {
               <Card className="card-chart text-center">
                 <CardHeader>
                   <h1>Global Deaths</h1>
-                  <CardTitle tag="h3">
+                  <CardTitle>
                     <h1 className="text-primary">
                       <i className="tim-icons icon-world text-primary" />
                       {totalDeaths}
@@ -107,7 +109,7 @@ class Dashboard extends React.Component {
               <Card className="card-chart text-center">
                 <CardHeader>
                   <h1>Global Cases</h1>
-                  <CardTitle tag="h3">
+                  <CardTitle>
                     <h1 className="text-warning">
                       <i className="tim-icons icon-world text-warning" />
                       {totalCases}
@@ -125,7 +127,7 @@ class Dashboard extends React.Component {
               <Card className="card-chart text-success text-center">
                 <CardHeader>
                   <h1>Global Recovered</h1>
-                  <CardTitle tag="h3">
+                  <CardTitle>
                     <h1 className="text-success">
                       <i className="tim-icons icon-world text-success" />
                       {totalRecovered}

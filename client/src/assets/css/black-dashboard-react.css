@@ -9552,7 +9552,8 @@ img {
     color: #222a42 !important; }
     .navbar.bg-white .navbar-nav a.nav-link p {
       color: #222a42; }
-  .navbar.bg-white .navbar-text, .navbar.bg-white .navbar-brand {
+  .navbar.bg-white .navbar-text,
+  .navbar.bg-white .navbar-brand {
     color: #222a42; }
   .navbar.bg-white .form-control {
     color: #222a42 !important; }
@@ -9572,14 +9573,24 @@ img {
     background-color: #fd5d93 !important; }
   .navbar .navbar-brand {
     position: fixed;
-    padding-top: .3125rem;
-    padding-bottom: .3125rem;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    color: #fd5d93;
+    margin-left: 17px;
+    margin-top: 3px;
+    text-transform: uppercase;
+    font-size: 140%; }
+  .navbar .navbar-brand-offline {
+    position: fixed;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
     color: #ffffff;
     margin-left: 17px;
     margin-top: 3px;
     text-transform: uppercase;
-    font-size: 1rem; }
-  .navbar .navbar-toggle button:focus, .navbar .navbar-toggler {
+    font-size: 140%; }
+  .navbar .navbar-toggle button:focus,
+  .navbar .navbar-toggler {
     outline: none; }
 
 .navbar-minimize-fixed {
@@ -9696,7 +9707,7 @@ img {
       margin-top: 0px; }
     .navbar .navbar-toggler-bar.bar2 {
       width: 17px;
-      transition: width .2s linear; }
+      transition: width 0.2s linear; }
   .navbar.bg-white:not(.navbar-transparent) .navbar-toggler-bar {
     background-color: #344675; }
   .navbar .toggled .navbar-toggler-bar {
@@ -9708,7 +9719,7 @@ img {
     position: relative; }
   .navbar-nav .nav-link i.fa,
   .navbar-nav .nav-link i.tim-icons {
-    opacity: .5; }
+    opacity: 0.5; }
   .bar1,
   .bar2,
   .bar3 {
@@ -9915,7 +9926,7 @@ img {
     padding-left: 0.5rem; } }
 
 @media screen and (max-width: 576px) {
-  .navbar[class*='navbar-toggleable-'] .container {
+  .navbar[class*="navbar-toggleable-"] .container {
     margin-left: 0;
     margin-right: 0; }
   .navbar .navbar-wrapper .navbar-toggle {

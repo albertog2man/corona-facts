@@ -43,9 +43,15 @@ class AdminNavbar extends React.Component {
     this.state = {
       collapseOpen: false,
       modalSearch: false,
-      color: "navbar-transparent"
+      color: "navbar-transparent",
+      live: false
     };
   }
+
+  componentWillReceiveProps({ live }) {
+    this.setState({ live: live });
+  }
+
   componentDidMount() {
     window.addEventListener("resize", this.updateColor);
   }
@@ -86,6 +92,7 @@ class AdminNavbar extends React.Component {
     });
   };
   render() {
+    const { live } = this.state;
     return (
       <>
         <Navbar
@@ -110,45 +117,13 @@ class AdminNavbar extends React.Component {
                 </button>
               </div>
               <div>
-                <NavbarBrand href="#pablo" onClick={e => e.preventDefault()}>
+                <div className={live ? "navbar-brand" : "navbar-brand-offline"}>
                   {this.props.brandText}
-                </NavbarBrand>
+                </div>
               </div>
             </div>
-            <button
-              aria-expanded={false}
-              aria-label="Toggle navigation"
-              className="navbar-toggler"
-              data-target="#navigation"
-              data-toggle="collapse"
-              id="navigation"
-              type="button"
-              onClick={this.toggleCollapse}
-            >
-              <span className="navbar-toggler-bar navbar-kebab" />
-              <span className="navbar-toggler-bar navbar-kebab" />
-              <span className="navbar-toggler-bar navbar-kebab" />
-            </button>
           </Container>
         </Navbar>
-        <Modal
-          modalClassName="modal-search"
-          isOpen={this.state.modalSearch}
-          toggle={this.toggleModalSearch}
-        >
-          <div className="modal-header">
-            <Input id="inlineFormInputGroup" placeholder="SEARCH" type="text" />
-            <button
-              aria-label="Close"
-              className="close"
-              data-dismiss="modal"
-              type="button"
-              onClick={this.toggleModalSearch}
-            >
-              <i className="tim-icons icon-simple-remove" />
-            </button>
-          </div>
-        </Modal>
       </>
     );
   }
