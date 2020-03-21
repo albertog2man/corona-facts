@@ -19,9 +19,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import dotenv from "dotenv";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
-
 import AdminLayout from "layouts/Default.js";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";

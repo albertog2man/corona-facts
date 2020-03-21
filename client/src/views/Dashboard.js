@@ -59,21 +59,14 @@ import {
 } from "react-google-maps";
 
 const base_url = process.env.BASE_URL;
-class SampleDashboard extends React.Component {
+class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      bigChartData: "data1"
-    };
+    this.state = {};
   }
-  setBgChartData = name => {
-    this.setState({
-      bigChartData: name
-    });
-  };
 
   async componentDidMount() {
-    let payload = await fetch(base_url);
+    let payload = await fetch("https://glacial-ocean-15704.herokuapp.com/api/");
     payload = await payload.json();
     this.setState(payload);
   }
@@ -300,7 +293,7 @@ class SampleDashboard extends React.Component {
   }
 }
 
-export default SampleDashboard;
+export default Dashboard;
 const MapWrapper = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap
