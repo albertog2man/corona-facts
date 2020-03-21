@@ -67,6 +67,7 @@ class Dashboard extends React.Component {
 
   async componentDidMount() {
     let payload = await fetch("https://glacial-ocean-15704.herokuapp.com/api/");
+    // let payload = await fetch("localhost:3000/api");
     payload = await payload.json();
     this.setState(payload);
   }
