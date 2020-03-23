@@ -101,21 +101,6 @@ class AdminNavbar extends React.Component {
         >
           <Container fluid>
             <div className="navbar-wrapper">
-              <div
-                className={classNames("navbar-toggle d-inline", {
-                  toggled: this.props.sidebarOpened
-                })}
-              >
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  onClick={this.props.toggleSidebar}
-                >
-                  <span className="navbar-toggler-bar bar1" />
-                  <span className="navbar-toggler-bar bar2" />
-                  <span className="navbar-toggler-bar bar3" />
-                </button>
-              </div>
               <div>
                 <div className={live ? "navbar-brand" : "navbar-brand-offline"}>
                   {this.props.brandText}

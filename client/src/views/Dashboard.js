@@ -58,12 +58,6 @@ import {
   Marker
 } from "react-google-maps";
 
-let base_url;
-if (process.env.NODE_ENV === "development") {
-  base_url = process.env.REACT_APP_LOCAL_URL;
-} else {
-  base_url = process.env.REACT_APP_REMOTE_URL;
-}
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -80,8 +74,11 @@ class Dashboard extends React.Component {
       totalDeaths,
       totalRecovered,
       deathRate,
-      recoveryRate
+      recoveryRate,
+      countryData,
+      ageData
     } = this.state;
+    console.log(countryData);
     return (
       <>
         <div className="content">
@@ -141,74 +138,11 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
-          {/* <Row>
-            <Col lg="3">
-              <Card className="card-chart text-danger text-center">
+          <Row>
+            {/* <Col lg="6">
+              <Card className="card-chart text-danger text-center card-center">
                 <CardHeader>
-                  <h4 className="text-primary">Deaths By Country</h4>
-                  <CardBody>
-                    <Table className="tablesorter" responsive>
-                      <thead className="text-primary">
-                        <tr>
-                          <th>Name</th>
-                          <th>Country</th>
-                          <th>City</th>
-                          <th className="text-center">Salary</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Dakota Rice</td>
-                          <td>Niger</td>
-                          <td>Oud-Turnhout</td>
-                          <td className="text-center">$36,738</td>
-                        </tr>
-                        <tr>
-                          <td>Minerva Hooper</td>
-                          <td>Curaçao</td>
-                          <td>Sinaai-Waas</td>
-                          <td className="text-center">$23,789</td>
-                        </tr>
-                        <tr>
-                          <td>Sage Rodriguez</td>
-                          <td>Netherlands</td>
-                          <td>Baileux</td>
-                          <td className="text-center">$56,142</td>
-                        </tr>
-                        <tr>
-                          <td>Philip Chaney</td>
-                          <td>Korea, South</td>
-                          <td>Overland Park</td>
-                          <td className="text-center">$38,735</td>
-                        </tr>
-                        <tr>
-                          <td>Doris Greene</td>
-                          <td>Malawi</td>
-                          <td>Feldkirchen in Kärnten</td>
-                          <td className="text-center">$63,542</td>
-                        </tr>
-                        <tr>
-                          <td>Mason Porter</td>
-                          <td>Chile</td>
-                          <td>Gloucester</td>
-                          <td className="text-center">$78,615</td>
-                        </tr>
-                        <tr>
-                          <td>Jon Porter</td>
-                          <td>Portugal</td>
-                          <td>Gloucester</td>
-                          <td className="text-center">$98,615</td>
-                        </tr>
-                      </tbody>
-                    </Table>
-                  </CardBody>
-                </CardHeader>
-              </Card>
-            </Col>
-            <Col lg="6">
-              <Card className="card-chart text-danger text-center">
-                <CardHeader>
-                  <h4 className="text-warning">Cases By Country</h4>
+                  <h4>Global Heat Map</h4>
                 </CardHeader>
                 <CardBody>
                   <div
@@ -225,71 +159,104 @@ class Dashboard extends React.Component {
                   </div>
                 </CardBody>
               </Card>
-            </Col>
-            <Col lg="3">
-              <Card className="card-chart text-center">
+            </Col> */}
+            <Col lg="7">
+              <Card className="card-chart text-danger text-center card-center">
                 <CardHeader>
-                  <h4 className="text-success">Recovered By Country</h4>
+                  <h4>Data By Location</h4>
+                  <CardBody>
+                    <Table className="tablesorter" responsive>
+                      <thead className="text-primary">
+                        <tr>
+                          <th>Country/Other</th>
+                          <th className="text-warning">Cases</th>
+                          <th className="text-warning">Active</th>
+                          <th className="text-warning">Today</th>
+                          <th className="text-primary">Deaths</th>
+                          <th className="text-primary">Today</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {countryData &&
+                          countryData.map(
+                            ({
+                              country_name,
+                              country_cases,
+                              country_active,
+                              cases_today,
+                              country_deaths,
+                              deaths_today
+                            }) => {
+                              return (
+                                <tr>
+                                  <td>{country_name}</td>
+                                  <td>
+                                    <b className="text-warning">
+                                      {country_cases}
+                                    </b>
+                                  </td>
+                                  <td>
+                                    <b className="text-warning">
+                                      {country_active}
+                                    </b>
+                                  </td>
+                                  <td>
+                                    <b className="text-warning">
+                                      {cases_today}
+                                    </b>
+                                  </td>
+                                  <td>
+                                    <b className="text-primary">
+                                      {country_deaths}
+                                    </b>
+                                  </td>
+                                  <td>
+                                    <b className="text-primary">
+                                      {deaths_today}
+                                    </b>
+                                  </td>
+                                </tr>
+                              );
+                            }
+                          )}
+                      </tbody>
+                    </Table>
+                  </CardBody>
+                </CardHeader>
+              </Card>
+            </Col>
+
+            <Col lg="5">
+              <Card className="card-chart text-center card-center">
+                <CardHeader>
+                  <h4>Data By Age</h4>
                 </CardHeader>
                 <CardBody>
                   <Table className="tablesorter" responsive>
                     <thead className="text-primary">
                       <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th className="text-center">Salary</th>
+                        <th>Age Range</th>
+                        <th className="text-primary">Death Rate</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Dakota Rice</td>
-                        <td>Niger</td>
-                        <td>Oud-Turnhout</td>
-                        <td className="text-center">$36,738</td>
-                      </tr>
-                      <tr>
-                        <td>Minerva Hooper</td>
-                        <td>Curaçao</td>
-                        <td>Sinaai-Waas</td>
-                        <td className="text-center">$23,789</td>
-                      </tr>
-                      <tr>
-                        <td>Sage Rodriguez</td>
-                        <td>Netherlands</td>
-                        <td>Baileux</td>
-                        <td className="text-center">$56,142</td>
-                      </tr>
-                      <tr>
-                        <td>Philip Chaney</td>
-                        <td>Korea, South</td>
-                        <td>Overland Park</td>
-                        <td className="text-center">$38,735</td>
-                      </tr>
-                      <tr>
-                        <td>Doris Greene</td>
-                        <td>Malawi</td>
-                        <td>Feldkirchen in Kärnten</td>
-                        <td className="text-center">$63,542</td>
-                      </tr>
-                      <tr>
-                        <td>Mason Porter</td>
-                        <td>Chile</td>
-                        <td>Gloucester</td>
-                        <td className="text-center">$78,615</td>
-                      </tr>
-                      <tr>
-                        <td>Jon Porter</td>
-                        <td>Portugal</td>
-                        <td>Gloucester</td>
-                        <td className="text-center">$98,615</td>
-                      </tr>
+                      {countryData &&
+                        ageData.map(({ ageRange, ageDeathRate }) => {
+                          return (
+                            <tr>
+                              <td>{ageRange}</td>
+                              <td>
+                                <b className="text-primary">{ageDeathRate}</b>
+                              </td>
+                            </tr>
+                          );
+                        })}
                     </tbody>
                   </Table>
                 </CardBody>
               </Card>
             </Col>
-          </Row> */}
+          </Row>
         </div>
       </>
     );
@@ -300,10 +267,10 @@ export default Dashboard;
 const MapWrapper = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap
-      defaultZoom={13}
+      defaultZoom={2}
       defaultCenter={{ lat: 40.748817, lng: -73.985428 }}
       defaultOptions={{
-        scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+        scrollwheel: true, //we disable de scroll over the map, it is a really annoing when you scroll through page
         styles: [
           {
             elementType: "geometry",
