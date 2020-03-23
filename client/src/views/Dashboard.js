@@ -78,7 +78,6 @@ class Dashboard extends React.Component {
       countryData,
       ageData
     } = this.state;
-    console.log(countryData);
     return (
       <>
         <div className="content">

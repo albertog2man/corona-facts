@@ -34,11 +34,11 @@ import logo from "assets/img/react-logo.png";
 var ps;
 
 let base_url;
-if (process.env.NODE_ENV === "development") {
-  base_url = process.env.REACT_APP_LOCAL_URL;
-} else {
-  base_url = process.env.REACT_APP_REMOTE_URL;
-}
+// if (process.env.NODE_ENV === "development") {
+//   base_url = process.env.REACT_APP_LOCAL_URL;
+// } else {
+base_url = process.env.REACT_APP_REMOTE_URL;
+// }
 class Default extends React.Component {
   constructor(props) {
     super(props);
@@ -91,7 +91,11 @@ class Default extends React.Component {
   async fetchData() {
     console.log("fetched");
     try {
-      const response = await fetch("http://corona-fact.com/api/");
+      const response = await fetch(base_url, {
+        headers: {
+          "Access-Control-Allow-Origin": base_url
+        }
+      });
       if (!response.ok) {
         throw Error(response.statusText);
       }
