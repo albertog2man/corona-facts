@@ -91,7 +91,7 @@ class Default extends React.Component {
   async fetchData() {
     console.log("fetched");
     try {
-      const response = await fetch(base_url);
+      const response = await fetch("http://corona-fact.com/api/");
       if (!response.ok) {
         throw Error(response.statusText);
       }
