@@ -61,7 +61,7 @@ class Default extends React.Component {
       }
     }
     this.fetchData();
-    this.timer = setInterval(() => this.fetchData(), 10000);
+    this.timer = setInterval(() => this.fetchData(), 60000);
   }
 
   componentWillUnmount() {
