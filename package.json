@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf build && mkdir build",
-    "start": "npm run build && node ./bin/www",
+    "start": "node ./bin/www",
     "nodemon": "nodemon ./bin/www",
     "build": "cd ./client && npm install && npm run build"
   },
